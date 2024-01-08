@@ -1,4 +1,4 @@
-img src="https://github.com/ElysiumLabs/FluentProblemDetails/blob/master/resources/icons/FluentResults-Icon-64.png" alt="FluentResults"/>
+<img src="https://github.com/ElysiumLabs/FluentProblemDetails/blob/main/resources/icons/FluentProblemDetails-Icon-64.png" alt="FluentProblemDetails"/>
 
 # FluentResults
 
