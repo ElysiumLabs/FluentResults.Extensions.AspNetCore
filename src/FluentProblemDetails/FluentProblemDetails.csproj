@@ -20,4 +20,9 @@
 	  <PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+      <InternalsVisibleTo Include="FluentProblemDetails.Tests" />
+	</ItemGroup>
+
 </Project>

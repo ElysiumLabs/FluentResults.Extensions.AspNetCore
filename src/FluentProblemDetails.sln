@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Presentation", "2 - Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentProblemDetails", "FluentProblemDetails\FluentProblemDetails.csproj", "{1739F688-B611-4545-A3F2-3F03E1A7D7D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentProblemDetails.Tests", "FluentProblemDetails.Tests\FluentProblemDetails.Tests.csproj", "{D88B2450-0A16-4D2D-A42E-AE832B03CF50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{1739F688-B611-4545-A3F2-3F03E1A7D7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1739F688-B611-4545-A3F2-3F03E1A7D7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1739F688-B611-4545-A3F2-3F03E1A7D7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88B2450-0A16-4D2D-A42E-AE832B03CF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88B2450-0A16-4D2D-A42E-AE832B03CF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88B2450-0A16-4D2D-A42E-AE832B03CF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88B2450-0A16-4D2D-A42E-AE832B03CF50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{905E2FAF-D9DC-473F-9EA5-E5FD017D1A75} = {83B19935-F48A-43D1-9B63-BF7F21AC44A0}
 		{CD28DAC2-82CD-4945-BDF3-4BDA6076DB80} = {83B19935-F48A-43D1-9B63-BF7F21AC44A0}
 		{1739F688-B611-4545-A3F2-3F03E1A7D7D1} = {85F57732-E8AB-4C5F-B3DC-1D6FAC9B0E03}
+		{D88B2450-0A16-4D2D-A42E-AE832B03CF50} = {85F57732-E8AB-4C5F-B3DC-1D6FAC9B0E03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4401AF07-778C-4635-8655-4A417EE510E9}
