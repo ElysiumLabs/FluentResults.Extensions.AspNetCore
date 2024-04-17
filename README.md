@@ -5,12 +5,12 @@
 [![Nuget downloads](https://img.shields.io/nuget/v/fluentproblemdetails.svg)](https://www.nuget.org/packages/FluentProblemDetails/)
 [![Nuget](https://img.shields.io/nuget/dt/fluentproblemdetails)](https://www.nuget.org/packages/FluentProblemDetails/)
 
-**FluentProblemDetails is a lightweight .NET library developed to resolve the gap  between FluentResults (domain) and ProblemDetails (presentation). **
+**FluentResults.Extensions.AspNetCore is a lightweight .NET library developed to resolve the gap  between FluentResults (domain) and ProblemDetails (presentation). **
 
 You can install [FluentProblemDetails with NuGet](https://www.nuget.org/packages/FluentProblemDetails/):
 
 ```
-Install-Package FluentProblemDetails
+Install-Package ElysiumLabs.FluentResults.Extensions.AspNetCore
 ```
 
 ## Key Features
