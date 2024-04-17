@@ -1,6 +1,6 @@
-<img src="https://github.com/ElysiumLabs/FluentProblemDetails/blob/main/resources/icons/FluentProblemDetails-Icon-64.png" alt="FluentProblemDetails"/>
+<img src="https://github.com/ElysiumLabs/FluentProblemDetails/blob/main/resources/icons/FluentExtensionsAspnetCore-Icon-64.png" alt="FluentProblemDetails"/>
 
-# FluentProblemDetails
+# FluentResults.Extensions.AspNetCore
 
 [![Nuget downloads](https://img.shields.io/nuget/v/fluentproblemdetails.svg)](https://www.nuget.org/packages/FluentProblemDetails/)
 [![Nuget](https://img.shields.io/nuget/dt/fluentproblemdetails)](https://www.nuget.org/packages/FluentProblemDetails/)
