@@ -5,21 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using FluentResults;
-using FluentProblemDetails.Errors;
+using FluentResults.Extensions.AspNetCore.Errors;
 
-namespace FluentProblemDetails
+namespace FluentResults.Extensions.AspNetCore.Options
 {
-    public class ResultErrorProblemDetailsOptionsSetup : IConfigureOptions<ResultErrorProblemDetailsOptions>
+    public class ResultExtensionsOptionsSetup : IConfigureOptions<ResultExtensionsOptions>
     {
-        public void Configure(ResultErrorProblemDetailsOptions options)
+        public void Configure(ResultExtensionsOptions options)
         {
             options.ErrorTypeToStatusCodeMap ??= DefaultErrorTypeToStatusCodeMap();
             options.ErrorTypeToStatusCodeMapFallback ??= DefaultErrorTypeToStatusCodeMapFallback;
-            options.GetTypeMap ??= DefaultTypeMap;
-            options.GetTitleMap ??= GetTitleByDescription;
-            options.GetDetailMap ??= DefaultDetailMap;
-            options.GetExtensionsMap ??= DefaultExtensionsMap;
+            options.ErrorGetTypeMap ??= DefaultTypeMap;
+            options.ErrorGetTitleMap ??= GetTitleByDescription;
+            options.ErrorGetDetailMap ??= DefaultDetailMap;
+            options.ErrorGetExtensionsMap ??= DefaultExtensionsMap;
         }
 
         private Dictionary<Type, int> DefaultErrorTypeToStatusCodeMap()

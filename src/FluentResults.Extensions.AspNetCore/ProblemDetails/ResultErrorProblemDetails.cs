@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using MvcProblemDetails = Microsoft.AspNetCore.Mvc.ProblemDetails;
 
-namespace FluentProblemDetails
+namespace FluentResults.Extensions.AspNetCore.ProblemDetails
 {
     public class ResultErrorProblemDetails : MvcProblemDetails
     {

@@ -1,10 +1,9 @@
-﻿using FluentResults;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace FluentProblemDetails
+namespace FluentResults.Extensions.AspNetCore.Options
 {
-    public class ResultErrorProblemDetailsOptions
+    public class ResultExtensionsOptions
     {
         /// <summary>
         /// To use or not the default Result<T> action filter, that enables automatic ProblemDetails generation
@@ -15,7 +14,7 @@ namespace FluentProblemDetails
         /// <summary>
         /// Creates recursivily problemdetails inside "reasons" property
         /// </summary>
-        public bool Recursive { get; set; } = true;
+        public bool ErrorRecursive { get; set; } = true;
 
         /// <summary>
         /// Self explonatory
@@ -30,24 +29,24 @@ namespace FluentProblemDetails
         /// <summary>
         /// Self explonatory
         /// </summary>
-        public Func<IError, Type, string> GetTypeMap { get; set; }
+        public Func<IError, Type, string> ErrorGetTypeMap { get; set; }
 
         /// <summary>
         /// Self explonatory
         /// </summary>
-        public Func<IError, Type, string> GetTitleMap { get; set; }
+        public Func<IError, Type, string> ErrorGetTitleMap { get; set; }
 
         /// <summary>
         /// Self explonatory
         /// </summary>
-        public Func<IError, Type, string> GetDetailMap { get; set; }
+        public Func<IError, Type, string> ErrorGetDetailMap { get; set; }
 
         /// <summary>
         /// Self explonatory
         /// </summary>
-        public Func<IError, Type, Dictionary<string, object>> GetExtensionsMap { get; set; }
+        public Func<IError, Type, Dictionary<string, object>> ErrorGetExtensionsMap { get; set; }
 
 
-
+        public Func<IResultBase, object, object> SuccessValueMap { get; set; }
     }
 }

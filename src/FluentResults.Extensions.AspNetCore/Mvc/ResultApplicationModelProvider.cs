@@ -1,23 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
+﻿using FluentResults.Extensions.AspNetCore.Options;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace FluentProblemDetails.Mvc
+namespace FluentResults.Extensions.AspNetCore.Mvc
 {
-    internal class ResultErrorProblemDetailsApplicationModelProvider : IApplicationModelProvider
+    internal class ResultApplicationModelProvider : IApplicationModelProvider
     {
-        private ResultErrorProblemDetailsOptions Options { get; }
+        private ResultExtensionsOptions Options { get; }
         private List<IActionModelConvention> ActionModelConventions { get; }
 
-        public ResultErrorProblemDetailsApplicationModelProvider(IOptions<ResultErrorProblemDetailsOptions> options)
+        public ResultApplicationModelProvider(IOptions<ResultExtensionsOptions> options)
         {
             Options = options.Value;
             ActionModelConventions = new List<IActionModelConvention>
             {
-                new ResultErrorProblemDetailsResultFilterConvention()
+                new ResultMvcFilterConvention()
             };
         }
 

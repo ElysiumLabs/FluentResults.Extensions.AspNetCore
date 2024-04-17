@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using FluentProblemDetails.Mvc;
 using FluentResults;
+using FluentResults.Extensions.AspNetCore;
+using FluentResults.Extensions.AspNetCore.Mvc;
+using FluentResults.Extensions.AspNetCore.Options;
+using FluentResults.Extensions.AspNetCore.ProblemDetails;
+using FluentResults.Extensions.AspNetCore.Success;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -105,25 +109,17 @@ namespace FluentProblemDetails.Tests.Mvc
             Assert.AreEqual(actionResult, context.Result);
         }
 
-
-
-
-
-
-
-
-
-        private ResultErrorProblemDetailsResultFilter CreateActionFilter(Action<ResultErrorProblemDetailsOptions> configure = null)
+        private ResultMvcFilter CreateActionFilter(Action<ResultExtensionsOptions> configure = null)
         {
-            var options = new ResultErrorProblemDetailsOptions();
+            var options = new ResultExtensionsOptions();
             configure?.Invoke(options);
 
-            var setup = new ResultErrorProblemDetailsOptionsSetup();
+            var setup = new ResultExtensionsOptionsSetup();
             setup.Configure(options);
 
             var optionsHolder = Options.Create(options);
 
-            return new ResultErrorProblemDetailsResultFilter(new ResultErrorProblemDetailsFactory(optionsHolder), optionsHolder);
+            return new ResultMvcFilter(new ResultInternalFilter(new ResultSuccessValueFactory(optionsHolder), new ResultErrorProblemDetailsFactory(optionsHolder)));
         }
 
 

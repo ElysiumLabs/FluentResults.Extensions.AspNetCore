@@ -1,5 +1,5 @@
-﻿using FluentProblemDetails.Errors;
-using FluentResults;
+﻿using FluentResults.Extensions.AspNetCore.Errors;
+using FluentResults.Extensions.AspNetCore.Options;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using System;
@@ -9,13 +9,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 
-namespace FluentProblemDetails
+namespace FluentResults.Extensions.AspNetCore.ProblemDetails
 {
     public class ResultErrorProblemDetailsFactory
     {
-        private readonly ResultErrorProblemDetailsOptions options;
+        private readonly ResultExtensionsOptions options;
 
-        public ResultErrorProblemDetailsFactory(IOptions<ResultErrorProblemDetailsOptions> options)
+        public ResultErrorProblemDetailsFactory(IOptions<ResultExtensionsOptions> options)
         {
             this.options = options.Value;
         }
@@ -42,12 +42,12 @@ namespace FluentProblemDetails
 
             var problemDetails = new ResultErrorProblemDetails
             {
-                Type = options.GetTypeMap?.Invoke(error, errorType),
-                Title = options.GetTitleMap?.Invoke(error, errorType),
+                Type = options.ErrorGetTypeMap?.Invoke(error, errorType),
+                Title = options.ErrorGetTitleMap?.Invoke(error, errorType),
                 Detail = error.Message
             };
 
-            var extensions = options.GetExtensionsMap?.Invoke(error, errorType);
+            var extensions = options.ErrorGetExtensionsMap?.Invoke(error, errorType);
             if (extensions is not null)
             {
                 foreach (var extension in extensions)
@@ -62,7 +62,7 @@ namespace FluentProblemDetails
                 problemDetails.Exception = exceptionalError.Exception;
             }
 
-            if (errorType == typeof(MultipleError) || options.Recursive)
+            if (errorType == typeof(MultipleError) || options.ErrorRecursive)
             {
                 var errors = error.Reasons.OfType<IError>();
                 problemDetails.Reasons = errors.Any() ? errors.Select(x => CreateInternal(x, false)).ToList() : null;

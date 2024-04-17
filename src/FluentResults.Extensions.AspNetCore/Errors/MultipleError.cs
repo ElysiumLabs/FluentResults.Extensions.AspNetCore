@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace FluentProblemDetails.Errors
+namespace FluentResults.Extensions.AspNetCore.Errors
 {
     [Description("Multiple errors")]
     internal class MultipleError : Error

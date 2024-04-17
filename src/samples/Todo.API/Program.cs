@@ -1,4 +1,6 @@
-using FluentProblemDetails;
+using FluentResults;
+using FluentResults.Extensions.AspNetCore;
+using FluentResults.Extensions.AspNetCore.Http;
 using Hellang.Middleware.ProblemDetails;
 using Hellang.Middleware.ProblemDetails.Mvc;
 using System.Diagnostics;
@@ -24,21 +26,24 @@ namespace TodoManager.API
             builder.Services
                 .AddProblemDetails(x => ConfigureProblemDetails(x, builder.Environment))
                 .AddProblemDetailsConventions()
-                .AddResultProblemDetails(x => 
-                {
-                    //should recursive show errors and create sub problemdetails??
-                    x.Recursive = true;
-
-                    x.GetTypeMap = (error, errorType) =>
+                .AddFluentResultExtensionsCore(
+                    options => 
                     {
-                        return $"https://todomanager.com/errors/{errorType.Name.ToLower()}";
-                    };
+                        //should recursive show errors and create sub problemdetails??
+                        options.ErrorRecursive = true;
 
-                    //create your own error and statuscode mappings...
-                    x.ErrorTypeToStatusCodeMap.Add(typeof(ConflictError), (int)HttpStatusCode.Conflict);
-                    //... or u can go with fallback:A
-                    //x.ErrorTypeToStatusCodeMapFallback = (errorType) => { return 418; }; //im teapot
-                }
+                        options.ErrorGetTypeMap = (error, errorType) =>
+                        {
+                            return $"https://todomanager.com/errors/{errorType.Name.ToLower()}";
+                        };
+
+                        //create your own error and statuscode mappings...
+                        options.ErrorTypeToStatusCodeMap.Add(typeof(ConflictError), (int)HttpStatusCode.Conflict);
+                        //... or u can go with fallback:A
+                        //x.ErrorTypeToStatusCodeMapFallback = (errorType) => { return 418; }; //im teapot
+
+                        //options.SuccessValueMap = (result, value) => new { Success = result.IsSuccess, Value = value };
+                    }
                 );
 
             builder.Services.AddControllers()
@@ -49,6 +54,8 @@ namespace TodoManager.API
 
             var app = builder.Build();
 
+         
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -57,15 +64,36 @@ namespace TodoManager.API
             }
 
             app.UseProblemDetails();
+            app.UseRouting();
             app.UseAuthorization();
 
-            app.MapControllers();
+            var global = app
+             .MapGroup(string.Empty)
+             .AddEndpointFilter<ResultEndpointFilter>();
+
+            global.MapControllers();
+
+            global.MapGet("/customer/{id}", (int id) =>
+            {
+                IResultBase result = null;
+
+                if (id == 0)
+                {
+                    result = new Result().WithError(new ConflictError("Conflito?"));
+                }
+                else
+                {
+                    result = new Result<object>().WithValue(new { Id = id });
+                }
+
+                return result;
+            });
 
             app.Run();
         }
 
         //ProblemDetails Defaults
-        private static void ConfigureProblemDetails(ProblemDetailsOptions options, IHostEnvironment environment)
+        private static void ConfigureProblemDetails(Hellang.Middleware.ProblemDetails.ProblemDetailsOptions options, IHostEnvironment environment)
         {
             // Only include exception details in a development environment. There's really no need
             // to set this as it's the default behavior. It's just included here for completeness :)

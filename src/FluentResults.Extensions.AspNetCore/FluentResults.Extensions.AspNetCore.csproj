@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-		<AssemblyName>FluentProblemDetails</AssemblyName>
-		<RootNamespace>FluentProblemDetails</RootNamespace>
+		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0;net8.0</TargetFrameworks>
+		<AssemblyName>FluentResults.Extensions.AspNetCore</AssemblyName>
+		<RootNamespace>FluentResults.Extensions.AspNetCore</RootNamespace>
 		<Description>FluentResults translator to error handling middleware, using RFC7807</Description>
-		<PackageId>FluentProblemDetails</PackageId>
+		<PackageId>ElysiumLabs.FluentResults.Extensions.AspNetCore</PackageId>
 		<PackageTags>fluentresult;error;exception;RFC7807;problemdetails</PackageTags>
-		<PackageIcon>FluentProblemDetails-Icon-128.png</PackageIcon>
+		<PackageIcon>FluentExtensionsAspnetCore-Icon-128.png</PackageIcon>
 		<LangVersion>9</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="../../resources/icons/FluentProblemDetails-Icon-128.png" Pack="true" PackagePath=""/>
+		<None Include="../../resources/icons/FluentExtensionsAspnetCore-Icon-128.png" Pack="true" PackagePath=""/>
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -30,4 +30,3 @@
 	</ItemGroup>
 
 </Project>
-

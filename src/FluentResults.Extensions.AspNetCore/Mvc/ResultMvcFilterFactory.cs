@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace FluentProblemDetails.Mvc
+namespace FluentResults.Extensions.AspNetCore.Mvc
 {
-    internal class ResultErrorProblemDetailsResultFilterFactory : IFilterFactory, IOrderedFilter
+    internal class ResultMvcFilterFactory : IFilterFactory, IOrderedFilter
     {
         public bool IsReusable => true;
 
@@ -16,7 +16,7 @@ namespace FluentProblemDetails.Mvc
 
         public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
         {
-            return ActivatorUtilities.CreateInstance<ResultErrorProblemDetailsResultFilter>(serviceProvider);
+            return ActivatorUtilities.CreateInstance<ResultMvcFilter>(serviceProvider);
         }
     }
 }
